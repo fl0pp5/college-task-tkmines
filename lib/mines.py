@@ -1,7 +1,13 @@
 import ctypes
+import platform
 
+if platform.system() == 'Linux':
+    _LIB = ctypes.CDLL('./libmines.so')
+elif platform.system() == 'Windows':
+    _LIB = ctypes.CDLL('./libmines.dll')
+else:
+    raise Exception("Not supported system")
 
-_LIB = ctypes.CDLL('./libmines.so')
 _init_minefield = _LIB.init_minefield
 _free_minefield = _LIB.free_minefield
 _open = _LIB.open
