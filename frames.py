@@ -1,3 +1,4 @@
+import os
 import tkinter
 import tkinter.messagebox
 import tkinter.simpledialog
@@ -112,17 +113,23 @@ class MenuFrame(GameFrame):
     def __init__(self, game):
         super().__init__(game)
 
+        theme_root = "themes"
+        self.theme_list = [os.path.join(theme_root, i) for i in os.listdir("themes")]
+        self.theme = tkinter.StringVar(self)
+        self.theme.set(self.theme_list[0])
+        tkinter.OptionMenu(self, self.theme, *self.theme_list).pack()
+
         tkinter.Button(
             self, text="10x10x10",
-            command=lambda: self._game.switch(PlayFrame, 10, 10, 10, "themes/native")
+            command=lambda: self._game.switch(PlayFrame, 10, 10, 10, self.theme.get())
         ).pack()
 
         tkinter.Button(
             self, text="20x20x20",
-            command=lambda: self._game.switch(PlayFrame, 20, 20, 20, "themes/native"),
+            command=lambda: self._game.switch(PlayFrame, 20, 20, 20, self.theme.get()),
         ).pack()
 
         tkinter.Button(
             self, text="30x30x30",
-            command=lambda: self._game.switch(PlayFrame, 30, 30, 30, "themes/native")
+            command=lambda: self._game.switch(PlayFrame, 30, 30, 30, self.theme.get())
         ).pack()
