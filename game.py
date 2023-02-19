@@ -17,7 +17,7 @@ class Game:
         self.record_manager = utils.RecordManager()
 
     def _init_ui(self):
-        self._root.iconphoto(False, tkinter.PhotoImage(file=os.path.join("res", "icon", "milk.png")))
+        self._root.iconbitmap(True, os.path.join("res", "icon", "milk.ico"))
         self._root.title("TkMines")
         self._root.resizable(False, False)
         self._root.minsize(230, 230)
