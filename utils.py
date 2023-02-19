@@ -56,7 +56,7 @@ class RecordManager:
                 pass
 
     def all(self) -> list[tuple[str, str]]:
-        query = "SELECT name, record FROM records ORDER BY datetime(record)"
+        query = "SELECT name, record FROM records ORDER BY record"
 
         with self.connection:
             return self.connection.execute(query).fetchall()

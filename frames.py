@@ -119,17 +119,15 @@ class MenuFrame(GameFrame):
         self.theme.set(self.theme_list[0])
         tkinter.OptionMenu(self, self.theme, *self.theme_list).pack()
 
-        tkinter.Button(
-            self, text="10x10x10",
-            command=lambda: self._game.switch(PlayFrame, 10, 10, 10, self.theme.get())
-        ).pack()
+        difficult = [
+            [10, 10, 10],
+            [15, 15, 30],
+            [24, 24, 50]
+        ]
 
-        tkinter.Button(
-            self, text="20x20x20",
-            command=lambda: self._game.switch(PlayFrame, 20, 20, 20, self.theme.get()),
-        ).pack()
+        for i in range(len(difficult)):
+            tkinter.Button(
+                self, text="{}x{}x{}".format(*difficult[i]),
+                command=lambda _i=i: self._game.switch(PlayFrame, *difficult[_i], self.theme.get())
+            ).pack()
 
-        tkinter.Button(
-            self, text="30x30x30",
-            command=lambda: self._game.switch(PlayFrame, 30, 30, 30, self.theme.get())
-        ).pack()
