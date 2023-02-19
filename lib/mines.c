@@ -102,7 +102,7 @@ flag(Minefield* self,
         return;
     }
 
-    cell->_flagged = !cell->_flagged;
+    self->_flagged_n += (cell->_flagged = !cell->_flagged) ? 1 : -1;
 }
 
 bool
