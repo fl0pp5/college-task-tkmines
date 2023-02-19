@@ -113,8 +113,8 @@ class MenuFrame(GameFrame):
     def __init__(self, game):
         super().__init__(game)
 
-        theme_root = "themes"
-        self.theme_list = [os.path.join(theme_root, i) for i in os.listdir("themes")]
+        theme_root = os.path.join("res", "themes")
+        self.theme_list = [os.path.join(theme_root, i) for i in os.listdir(theme_root)]
         self.theme = tkinter.StringVar(self)
         self.theme.set(self.theme_list[0])
         tkinter.OptionMenu(self, self.theme, *self.theme_list).pack()

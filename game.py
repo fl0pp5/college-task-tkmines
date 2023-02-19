@@ -1,3 +1,4 @@
+import os.path
 import tkinter
 import tkinter.messagebox
 import typing
@@ -10,11 +11,14 @@ class Game:
     def __init__(self, root: tkinter.Tk):
         self._frame: GameFrame | None = None
         self._root = root
+
         self._init_ui()
 
         self.record_manager = utils.RecordManager()
 
     def _init_ui(self):
+        self._root.iconphoto(False, tkinter.PhotoImage(file=os.path.join("res", "icon", "milk.png")))
+        self._root.title("TkMines")
         self._root.resizable(False, False)
         self._root.minsize(230, 230)
 
