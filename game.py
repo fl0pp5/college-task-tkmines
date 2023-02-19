@@ -36,6 +36,8 @@ class Game:
         help_menu.add_command(label="About", command=self.about)
         help_menu.add_command(label="How to play?", command=self.how2play)
 
+        self.switch(MenuFrame)
+
     @property
     def root(self) -> tkinter.Tk:
         return self._root
